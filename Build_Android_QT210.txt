@@ -1,7 +1,70 @@
 
 *Build U-boot for MMC boot
-
-
+	*Decompress u-boot
+		tar -jxvf qt210_ics_uboot.bz2
+	*Enter u-boot folder
+		cd qt210_ics_uboot
+	*Config and Build
+		make smdkv210single_config
+		make -j8
+	*Result image
+		u-boot.bin
+		
 *Build Android Kernel 
+	*Decompress Android Kernel
+		tar -jxvf qt210_ics_kernel3.0.8_adk.tar.bz2
+	*Enter Kernel folder
+		cd qt210_ics_kernel3.0.8_adk
+	*Config and Build
+		cp config_for_ADK .config
+		make -j8 uImage
+	*Result image
+		arch/arm/boot/uImage
 
 *Build Android file system
+	*Decompress Android 4.0 source code
+		tar -jxvf android_4.0.3_ADK.tar.bz2
+	*Enter Android folder
+		cd android_4.0.3_ADK
+	*Set up envirunment
+		 source build/envsetup.sh
+	*Config build target
+		lunch
+		full_smdkv210-eng
+	*Build
+		make -j8
+	*Result
+		out/target/product/smdkv210/ramdisk-uboot.img
+		out/target/product/smdkv210/system.img
+
+*Update Android to QT210
+
+	*Step 1 - Enter fastboot mode [Target]
+		fastboot
+
+	*Step 2 - Update u-boot [PC]
+		fastboot flash bootloader u-boot.bin
+
+	*Step 3 - Reboot target board and load new bootloader [Target]
+		reboot
+		fastboot
+
+	*Step 4 - Update Android Kernel [PC]
+		fastboot flash kernel uImage
+
+	*Step 5 - Update Android RAMDISK [PC]
+		fastboot flash ramdisk ramdisk-uboot.img
+
+	*Step 6 - Update Android System.img [PC]
+		fastboot flash system system.img
+
+	*Step 7 - Finish and reboot [Target]
+		ctrl+c to interrtup fastboot mode
+		reboot
+
+	*Step 8 - Set stay awake mode on Android
+		setting->development->stay awake (checked)
+
+
+
+
