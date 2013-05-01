@@ -1,0 +1,7 @@
+
+*Build U-boot for MMC boot
+
+
+*Build Android Kernel 
+
+*Build Android file system
