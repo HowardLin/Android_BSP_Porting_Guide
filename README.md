@@ -13,6 +13,16 @@ This project provides lots of android sample codes for QT210 development board. 
 		ex: cd android/out/target/product/smdkv210/systm/lib
 		    adb push libhello.so /sytem/lib
 
+## Documentation
+
+* hello_lib - helloworld JNI library sample code.
+* hello_native - helloworld native C sample code.
+* hello_static - helloworld static C sample code.
+* led_driver - led kernel module for QT210 development board.
+* led_jni - led JNI library and APP sample code.
+* native_test - including keypad, led and touchscreen native C sample code.
+* Build_Android_QT210.txt - instruction for build android ICS on QT210 development board.
+
 ## Author
 
 * Howard Lin (howard.lin@cyess.com)
