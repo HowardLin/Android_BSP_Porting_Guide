@@ -1,5 +1,4 @@
-
-*Build U-boot for MMC boot
+##Build U-boot for MMC boot
 	*Decompress u-boot
 		tar -jxvf qt210_ics_uboot.bz2
 	*Enter u-boot folder
