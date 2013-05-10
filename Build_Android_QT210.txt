@@ -36,6 +36,14 @@
 	*Result
 		out/target/product/smdkv210/ramdisk-uboot.img
 		out/target/product/smdkv210/system.img
+*Build Bootable SD Card
+
+	*Step 1 - Use sd_fusing to create bootable SD card
+		cd qt210_ics_uboot/sd_fusing
+		sudo ./sd_fusing_uboot.sh /dev/sdX
+
+	*Step 2 - Boot from SD card and create partition (In u-boot stage)
+		fdisk -c 0
 
 *Update Android to QT210
 
@@ -61,6 +69,8 @@
 	*Step 7 - Finish and reboot [Target]
 		ctrl+c to interrtup fastboot mode
 		reboot
+	*Step 8 - Format data partition [PC]
+		sudo mkfs.ext4 /dev/sdX3   where X is your usb sd card reader number (Try dmesg)
 
 	*Step 8 - Set stay awake mode on Android
 		setting->development->stay awake (checked)
